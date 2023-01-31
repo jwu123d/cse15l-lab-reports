@@ -1,12 +1,5 @@
 The code for StringServer:
-'''
-import java.io.IOException;
-import java.net.URI;
 
-class Handler implements URLHandler {
-    // The one bit of state on the server: a number that will be manipulated by
-    // various requests.
-    String list[] = {""};
 
     public String handleRequest(URI url) {
         if (url.getPath().equals("/")) {
@@ -45,18 +38,13 @@ class Handler implements URLHandler {
                   System.arraycopy(oldArray, 0, newArray, 0, preserveLength);
             return newArray;
       }
-}
 
-class StringServer {
-    public static void main(String[] args) throws IOException {
-        if(args.length == 0){
-            System.out.println("Missing port number! Try any number between 1024 to 49151");
-            return;
-        }
 
-        int port = Integer.parseInt(args[0]);
+![image](https://user-images.githubusercontent.com/71479254/215657068-2a22f86f-45d3-498d-9a95-5981e9b9e95e.png)
 
-        Server.start(port, new Handler());
-    }
-}
-'''
+In this screenshot, The method "handlerequest" is been called. Since it has /add-message, it will call the "resizeArray" method to increment the size of the array, and also call the "printAll" method to print out all the string in this array.
+
+![image](https://user-images.githubusercontent.com/71479254/215657686-6fbca17b-eedd-4c79-8ce5-3eec0089dfa5.png)
+
+In this screenshot, it also called the same three methods, and this request extend the size of list. list is just a array that stores all the strings. I appended the new string "How are you" at the end of the array and increment the size of the array.
+
