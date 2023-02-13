@@ -1,11 +1,22 @@
->PART ONE
+**Lab Report 2 - Servers and Bugs (Week 3)**
+
+**PART ONE: Web Server**
 
 The code for StringServer:
 
 
-    public String handleRequest(URI url) {
-        if (url.getPath().equals("/")) {
-            return printAll(list);
+
+     import java.io.IOException;
+     import java.net.URI;
+
+     class Handler implements URLHandler {
+     // The one bit of state on the server: a number that will be manipulated by
+     // various requests.
+     String list[] = {""};
+
+     	public String handleRequest(URI url) {
+        	if (url.getPath().equals("/")) {
+            	return printAll(list);
         }
         else {
             System.out.println("Path: " + url.getPath());
@@ -20,31 +31,31 @@ The code for StringServer:
         }
     }
 
-    public String printAll(String[] x){
-        String out ="";
-        for(int i = 0; i < x.length; i+=1){
-            out = out + x[i] + "\n";
-        }
-        list = (String[])resizeArray(list, list.length+1);
-        return out;
-    }
+    	public String printAll(String[] x){
+        	String out ="";
+        	for(int i = 0; i < x.length; i+=1){
+            	out = out + x[i] + "\n";
+        	}
+       		list = (String[])resizeArray(list, list.length+1);
+        	return out;
+    	}
 
 
-    //this code below is from internet, the purpose of this code is just change the size of the Array
-    private static Object resizeArray (Object oldArray, int newSize) {
-            int oldSize = java.lang.reflect.Array.getLength(oldArray);
-            Class elementType = oldArray.getClass().getComponentType();
-            Object newArray = java.lang.reflect.Array.newInstance(elementType, newSize);
-            int preserveLength = Math.min(oldSize, newSize);
-               if (preserveLength > 0)
+    	//this code below is from internet, the purpose of this code is just 	change the size of the Array
+    	private static Object resizeArray (Object oldArray, int newSize) {
+            	int oldSize = java.lang.reflect.Array.getLength(oldArray);
+            	Class elementType = oldArray.getClass().getComponentType();
+            	Object newArray = java.lang.reflect.Array.newInstance(elementType, newSize);
+            	int preserveLength = Math.min(oldSize, newSize);
+               	if (preserveLength > 0)
                   System.arraycopy(oldArray, 0, newArray, 0, preserveLength);
-            return newArray;
-      }
+            	return newArray;
+      	}
 
 
 ![image](https://user-images.githubusercontent.com/71479254/215657068-2a22f86f-45d3-498d-9a95-5981e9b9e95e.png)
 
-In this screenshot, The method "handlerequest" is been called. Since it has /add-message, it will call the "resizeArray" method to increment the size of the array, and also call the "printAll" method to print out all the string in this array.
+In this screenshot, The method "handlerequest" is been called. Since it has /add-message, it will call the "resizeArray" method to increment the size of the array, and also call the "printAll" method to print out all the string in this array. The usage of /add-message is to trigger the url.getPath().contains("/add-message") if statement. Once the server sees this word, it will add the next word follow by the q=, to get the query and add the word to the list. URI url is the parameter we pass to the handleRequest, it contains the url address that the server receive. The string s in the handleRequest is just to get the word followed by the s.
 
 ![image](https://user-images.githubusercontent.com/71479254/215657686-6fbca17b-eedd-4c79-8ce5-3eec0089dfa5.png)
 
@@ -52,7 +63,7 @@ In this screenshot, it also called the same three methods, and this request exte
 
 Here the value of the **list** changed, it stored one more string. The parameter changed since we have a different word behind add-message. The url of course changed since we need to change that to make another request.
 
->PART TWO
+**PART TWO:Bug and fix**
 
 For the Array example in lab3, One failure-including input of the function ReverseInPlace would be {3,2,1,0}. 
 
@@ -114,6 +125,6 @@ The code after fixes the bug:
     
  The main issue of the previous code is it updated the number in the front, but it also lose the data of the first half of the array. So instead of directly assign the arr[i], we swap the number at arr[i] and arr[arr.length-1-i]. Therefore we don't lose data, and be able to reverse an array correctly.
  
- >PART THREE
+ **PART THREE:Conclusion**
  
 These two labs have taught me a lot of things. The second lab taught me how to build a server, I learned how to create a local server and change the role of the server in the backend. I also learned how to set up a remote server where I can modify the numbers in other people's servers. This taught me a lot. The third lab taught me how to fix bugs, which will be very useful in my future work. Here I used junit test to find the problem. I learned to use google's gtest before, also has the same effect, are very good to use. I didn't know any of this before so it is really helpful.
