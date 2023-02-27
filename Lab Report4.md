@@ -13,25 +13,32 @@ Tasks:
 
 
 First, to set up the race, we delete the existing fork of the repository.
+
 ![image](https://user-images.githubusercontent.com/71479254/221697296-a0593139-de25-45e5-910d-155044a1ce1b.png)
 
 as well as delete the existing lab7 file on the remote ieng6:
+
 ![image](https://user-images.githubusercontent.com/71479254/221697690-279765f5-d8c3-447d-8f15-f39d0682ce6f.png)
 
 Second, we make a new fork:
+
 ![image](https://user-images.githubusercontent.com/71479254/221697968-a8f7fc16-cd35-4ec5-b1de-5749713f6049.png)
 
 Third, here the timer already: 
+
 ![image](https://user-images.githubusercontent.com/71479254/221698242-2f7809ee-9c74-4ef7-97a2-5c571273b857.png)
 
 Fourth, we click `<up>` once to found `ssh cs15lwi23anb@ieng6.ucsd.edu`, and press `<enter>`
+
 ![image](https://user-images.githubusercontent.com/71479254/221699468-c683674d-5d4f-4b3a-8830-7a1f06d871b6.png)
 
 Fifth, since we can copy commands in advance, we copied this command sequences: 
+
 ![image](https://user-images.githubusercontent.com/71479254/221699711-d9866702-1b91-4efb-830f-9b58e39e2660.png)
 
 Which is we clone the lab7 from github, then go to lab7 directory, run the test, and open vim:
 we paste it into the terminal by `<rightclick>`:
+
 ![image](https://user-images.githubusercontent.com/71479254/221700221-a466e0c5-da62-492a-8e64-e94796610138.png)
 this step also finishes step six.
 
